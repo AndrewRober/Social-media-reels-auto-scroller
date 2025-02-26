@@ -1,0 +1,45 @@
+{
+  "name": "Reel AutoScroller",
+  "description": "Automatically scrolls to the next Reel/Short/TikTok.",
+  "version": "2.8.6",
+  "manifest_version": 3,
+
+  // Permissions we need: 'scripting', 'activeTab' for executing scripts,
+  // and 'declarativeContent' to SHOW/HIDE the icon based on page URL
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "declarativeContent"
+  ],
+
+  // Our background service worker
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  // 'action' is the new style for the extension icon (Manifest V3).
+  // By default, Chrome will show it, but we'll hide/disable it on most pages
+  // using declarativeContent rules in background.js
+  "action": {
+    "default_icon": {
+      "16": "icons/16/colored-inactive.png",
+      "32": "icons/32/colored-inactive.png",
+      "48": "icons/48/colored-inactive.png",
+      "128": "icons/128/colored-inactive.png"
+    }
+  },
+
+  // Automatically inject our content script on these pages
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.facebook.com/reel/*",
+        "https://www.youtube.com/shorts/*",
+        "https://www.instagram.com/reels/*",
+        "https://www.tiktok.com/*/video/*"
+      ],
+      "js": ["content.js"],
+	  "all_frames": false
+    }
+  ]
+}

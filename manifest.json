@@ -38,8 +38,8 @@
         "https://www.instagram.com/reels/*",
         "https://www.tiktok.com/*/video/*"
       ],
-      "js": ["content.js"],
-	  "all_frames": false
+      "js": [ "content.js" ],
+      "all_frames": false
     }
   ]
 }
